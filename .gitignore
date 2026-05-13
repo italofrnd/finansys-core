@@ -1,0 +1,36 @@
+# Dependências
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Variáveis de ambiente (NÃO SUBIR!)
+.env
+.env.local
+.env.production
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Arquivos de build
+build/
+out/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos de backup
+*.bak
+*.tmp
+
+# Arquivos do PostgreSQL local
+*.fdb
+*.gdb

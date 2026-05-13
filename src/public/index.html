@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinanSys Core | Sistema Financeiro</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- TELA DE LOGIN (LAYOUT SPLIT) -->
+
+  <div id="login-screen" class="screen">
+    <div class="login-split">
+      <!-- Lado esquerdo: Formulário -->
+      <div class="login-form-container">
+        <img src="./assets/logo.png" alt="FinanSys Core Logo" class="login-logo" />
+        <h2>FinanSys Core</h2>
+        <p class="login-subtitle">Gerencie suas finanças com inteligência</p>
+        
+        <form id="login-form" class="login-form">
+          <input type="text" id="usuario" placeholder="Usuário" required autocomplete="username" />
+          <input type="password" id="senha" placeholder="Senha" required autocomplete="current-password" />
+          <button type="submit">Entrar</button>
+          <p id="resposta" class="login-resposta"></p>
+        </form>
+        
+        <div class="login-links">
+          <a href="#" id="criar-conta-link">Criar nova conta</a>
+        </div>
+        
+        <footer class="login-footer">
+          Desenvolvido por <strong>Ítalo Fernando</strong>
+        </footer>
+      </div>
+      
+      <!-- Lado direito: Hero -->
+      <div class="login-hero">
+        <div class="hero-content">
+          <h1>FinanSys Core</h1>
+          <p>Solução completa para gestão financeira de empresas</p>
+          <div class="hero-features">
+            <span> Contas a Pagar / Receber</span>
+            <span> Fluxo de Caixa</span>
+            <span> DRE (Demonstração de Resultado)</span>
+            <span> Segurança e Controle de Acesso</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELA DE CADASTRO (LAYOUT SPLIT) -->
+
+  <div id="cadastro-screen" class="screen" style="display: none;">
+    <div class="login-split">
+      <!-- Lado esquerdo: Formulário de cadastro -->
+      <div class="login-form-container">
+        <img src="./assets/logo.png" alt="FinanSys Core Logo" class="login-logo" />
+        <h2>Criar Conta</h2>
+        <p class="login-subtitle">Preencha os dados para se cadastrar</p>
+        
+        <form id="cadastro-form" class="login-form">
+          <input type="text" id="cadastro-usuario" placeholder="Usuário" required />
+          <input type="text" id="cadastro-nome" placeholder="Nome completo" required />
+          <input type="password" id="cadastro-senha" placeholder="Senha (mínimo 6 caracteres)" required />
+          <input type="password" id="cadastro-confirmar-senha" placeholder="Confirmar senha" required />
+          <button type="submit">Cadastrar</button>
+          <p id="cadastro-resposta" class="login-resposta"></p>
+        </form>
+        
+        <div class="login-links">
+          <a href="#" id="voltar-login-link">← Voltar para o login</a>
+        </div>
+        
+        <footer class="login-footer">
+          Desenvolvido por <strong>Ítalo Fernando</strong>
+        </footer>
+      </div>
+      
+      <!-- Lado direito: Hero -->
+      <div class="login-hero">
+        <div class="hero-content">
+          <h1>FinanSys Core</h1>
+          <p>Junte-se a nós e gerencie suas finanças com inteligência</p>
+          <div class="hero-features">
+            <span> Cadastro simples e rápido</span>
+            <span> Dados seguros</span>
+            <span> Acesso a relatórios completos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELA DO DASHBOARD -->
+
+  <div id="dashboard-screen" class="screen" style="display: none;">
+    <header class="dashboard-header">
+      <img src="./assets/logo.png" alt="FinanSys Core Logo" class="logo" />
+      <h1>FinanSys Core</h1>
+    </header>
+
+    <nav class="dashboard-nav">
+      <button class="nav-btn" data-tipo="receber">Contas a Receber</button>
+      <button class="nav-btn" data-tipo="pagar">Contas a Pagar</button>
+      <button class="nav-btn" data-tipo="fluxo">Fluxo de Caixa</button>
+      <button class="nav-btn" data-tipo="dre">DRE</button>
+      <button id="logout-btn" class="nav-btn" style="margin-left: auto;">🚪 Sair</button>
+    </nav>
+
+    <main class="dashboard-content">
+      <div class="filtros">
+        <label for="inicio">De:</label>
+        <input type="date" id="inicio" />
+        <label for="fim">Até:</label>
+        <input type="date" id="fim" />
+        <button id="btn-filtrar">Filtrar</button>
+      </div>
+
+      <div class="btn-add-container">
+        <button id="btn-add-conta" class="btn-add" style="display: none;">+ Nova Conta</button>
+      </div>
+
+      <div class="table-container">
+        <table id="tabela-dados">
+          <thead id="tabela-head">
+            <tr><th>Carregando...</th></tr>
+          </thead>
+          <tbody id="tabela-body"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="dashboard-footer">
+      Desenvolvido por <strong>Ítalo Fernando</strong>
+    </footer>
+  </div>
+
+
+  <!-- MODAL PARA CRUD -->
+
+  <div id="modal-conta" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="modal-fechar">&times;</span>
+      <h2 id="modal-title">Nova Conta</h2>
+      <form id="form-conta">
+        <input type="hidden" id="conta-id" />
+        <label for="documento">Número do Documento</label>
+        <input type="text" id="documento" required />
+        <label for="cliente" id="label-cliente">Nome do Cliente</label>
+        <input type="text" id="cliente" />
+        <label for="valor">Valor (R$)</label>
+        <input type="number" id="valor" step="0.01" required />
+        <label for="data_prevista">Data Prevista</label>
+        <input type="date" id="data_prevista" required />
+        <label for="observacao">Observação</label>
+        <textarea id="observacao" rows="3"></textarea>
+        <button type="submit" id="btn-salvar-conta">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-mensagem" class="toast-mensagem" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
