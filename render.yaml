@@ -2,10 +2,8 @@ services:
   - type: web
     name: finansys-core-api
     runtime: node
-    buildCommand: npm install pg --save && npm install --production
+    buildCommand: npm install --production
     startCommand: node src/main.js
     envVars:
       - key: NODE_VERSION
         value: 20.11.0
-      - key: NPM_VERSION
-        value: 10.2.4
