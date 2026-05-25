@@ -24,7 +24,7 @@ const { testConnection } = require('./config/db');
 // ============================================
 
 const app = express();
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3000;
 
 // ============================================
 // 2. MIDDLEWARES GLOBAIS
@@ -68,6 +68,7 @@ app.use((err, req, res, next) => {
 // 6. INICIALIZAÇÃO DO SERVIDOR
 // ============================================
 
+console.log(`Tentando iniciar na porta ${PORT}`);
 app.listen(PORT, () => {
   console.log(`
   ============================================
