@@ -2,7 +2,7 @@ services:
   - type: web
     name: finansys-core-api
     runtime: node
-    buildCommand: npm install --production
+    buildCommand: npm install
     startCommand: node src/main.js
     envVars:
       - key: NODE_VERSION
