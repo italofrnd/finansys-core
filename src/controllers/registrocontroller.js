@@ -41,9 +41,9 @@ exports.registrar = async (req, res) => {
     });
 
   } catch (error) {
-    // SE O ERRO FOR DE UNICIDADE (23505),
+    // SE O ERRO FOR DE UNICIDADE (23505) - ERRO AO CRIAR NOVO USUÁRIO NO PG,
     if (error.code === '23505') {
-      console.warn(`⚠️ Usuário já existe (código: ${codigo})`);
+      console.warn(` Usuário já existe (código: ${codigo})`);
       return res.status(409).json({ error: 'Este nome de usuário já está em uso.' });
     }
     
