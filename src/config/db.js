@@ -40,7 +40,7 @@ pool.on('connect', () => {
 });
 
 pool.on('error', (err) => {
-  console.error('❌ Erro no pool de conexões:', err.message);
+  console.error('Erro no pool de conexões:', err.message);
 });
 
 
