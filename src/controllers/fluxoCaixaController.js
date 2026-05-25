@@ -47,7 +47,7 @@ exports.getFluxo = async (req, res) => {
     const result = await db.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error('❌ Erro ao buscar fluxo de caixa:', error);
+    console.error('Erro ao buscar fluxo de caixa:', error);
     res.status(500).json({ error: 'Erro ao consultar fluxo de caixa' });
   }
 };
@@ -76,7 +76,7 @@ exports.getDRE = async (req, res) => {
     const result = await db.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error('❌ Erro ao buscar DRE:', error);
+    console.error('Erro ao buscar DRE:', error);
     res.status(500).json({ error: 'Erro ao consultar DRE' });
   }
 };
